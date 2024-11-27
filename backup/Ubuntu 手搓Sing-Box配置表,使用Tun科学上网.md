@@ -222,13 +222,20 @@ tar -xzvf sing-box-1.10.3-linux-amd64.tar.gz  && cd sing-box-1.10.3-linux-amd64
     }
 }
 ```
+修改其中"outbounds"出站中的服务器的配置信息,"clash_api"面板中的访问密码
 
 **3.运行Sing-box**
 ```
 ./sing-box run -c ./config.json
 ```
 
-**4.config.json配置文件原始内容**
+**4.使用面板查看Sing-box运行状态**
+浏览器输入配置ClashApi的地址端口号输入访问密码,例如:`http://192.168.1.21:9090/ui/#/proxies`
+![U120241128022631](https://github.com/user-attachments/assets/7ed00e83-452c-4348-963d-2289d2c01cd0)
+![B120241128022631](https://github.com/user-attachments/assets/a14e9099-ca9d-426f-8426-b0ccb87c83e9)
+
+
+**5.config.json配置文件原始内容**
 ```
 {
     "log": {
