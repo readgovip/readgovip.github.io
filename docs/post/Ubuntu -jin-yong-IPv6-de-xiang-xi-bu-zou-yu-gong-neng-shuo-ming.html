@@ -10,15 +10,15 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="**Bonding简介**
-bonding(绑定)是一种linux系统下的网卡绑定技术，可以把服务器上n个物理网卡在系统内部抽象(绑定)成一个逻辑上的网卡，能够提升网络吞吐量、实现网络冗余、负载均衡等功能，有很多优势。">
-<meta property="og:title" content="ubuntu 配置双网卡绑定提升带宽">
-<meta property="og:description" content="**Bonding简介**
-bonding(绑定)是一种linux系统下的网卡绑定技术，可以把服务器上n个物理网卡在系统内部抽象(绑定)成一个逻辑上的网卡，能够提升网络吞吐量、实现网络冗余、负载均衡等功能，有很多优势。">
+<meta name="description" content="**1.备份相关配置文件**
+在进行系统配置更改之前，进行备份是一个非常重要的步骤。">
+<meta property="og:title" content="Ubuntu 禁用IPv6的详细步骤与功能说明">
+<meta property="og:description" content="**1.备份相关配置文件**
+在进行系统配置更改之前，进行备份是一个非常重要的步骤。">
 <meta property="og:type" content="article">
-<meta property="og:url" content="http://blog.ivps.top/post/ubuntu%20-pei-zhi-shuang-wang-qia-bang-ding-ti-sheng-dai-kuan.html">
+<meta property="og:url" content="http://blog.ivps.top/post/Ubuntu%20-jin-yong-IPv6-de-xiang-xi-bu-zou-yu-gong-neng-shuo-ming.html">
 <meta property="og:image" content="https://github.githubassets.com/favicons/favicon.svg">
-<title>ubuntu 配置双网卡绑定提升带宽</title>
+<title>Ubuntu 禁用IPv6的详细步骤与功能说明</title>
 
 
 
@@ -61,7 +61,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 
 <body>
     <div id="header">
-<h1 class="postTitle">ubuntu 配置双网卡绑定提升带宽</h1>
+<h1 class="postTitle">Ubuntu 禁用IPv6的详细步骤与功能说明</h1>
 <div class="title-right">
     <a href="http://blog.ivps.top" id="buttonHome" class="btn btn-invisible circle" title="首页">
         <svg class="octicon" width="16" height="16">
@@ -69,7 +69,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
         </svg>
     </a>
     
-    <a href="https://github.com/readgovip/readgovip.github.io/issues/5" target="_blank" class="btn btn-invisible circle" title="Issue">
+    <a href="https://github.com/readgovip/readgovip.github.io/issues/6" target="_blank" class="btn btn-invisible circle" title="Issue">
         <svg class="octicon" width="16" height="16">
             <path id="pathIssue" fill-rule="evenodd"></path>
         </svg>
@@ -85,54 +85,52 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><p><strong>Bonding简介</strong><br>
-bonding(绑定)是一种linux系统下的网卡绑定技术，可以把服务器上n个物理网卡在系统内部抽象(绑定)成一个逻辑上的网卡，能够提升网络吞吐量、实现网络冗余、负载均衡等功能，有很多优势。</p>
-<p>bonding技术是linux系统内核层面实现的，它是一个内核模块(驱动)。使用它需要系统有这个模块, 我们可以modinfo命令查看下这个模块的信息, 一般来说都支持。</p>
-<pre class="notranslate"><code class="notranslate">modinfo bonding |more
+<div class="markdown-body" id="postBody"><p><strong>1.备份相关配置文件</strong><br>
+在进行系统配置更改之前，进行备份是一个非常重要的步骤。这样，如果配置过程中出现问题或需要恢复到原始状态，我们可以轻松地实现。对于IPv6禁用操作，我们需要备份<code class="notranslate">/etc/default/grub</code>和<code class="notranslate">/etc/sysctl.conf</code>这两个文件</p>
+<pre class="notranslate"><code class="notranslate">sudo cp -v /etc/default/grub /etc/default/grub.bak
+sudo cp -v /etc/sysctl.conf /etc/sysctl.conf.bak
 </code></pre>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/4e67e93d-be25-415a-9767-086ddd4442dc"><img src="https://github.com/user-attachments/assets/4e67e93d-be25-415a-9767-086ddd4442dc" alt="338db61f8dfd4cd3d3d7d5b02864a4f6" style="max-width: 100%;"></a></p>
-<p>Ubuntu从17.04开始，已经放弃在/etc/network/interfaces 里固定IP的配置，而是改成netplan方式，配置文件：/etc/netplan/00-installer-config.yaml</p>
-<p><strong>1.修改配置文件</strong><br>
-备份文件</p>
-<pre class="notranslate"><code class="notranslate">cp etc/netplan/00-installer-config.yaml etc/netplan/00-installer-config.yaml.old
+<p><strong>2.修改sysctl配置以禁用IPv6</strong><br>
+我们可以直接控制系统内核对IPv6的处理方式。使用文本编辑器打开<code class="notranslate">/etc/sysctl.conf</code>文件</p>
+<pre class="notranslate"><code class="notranslate">sudo nano /etc/sysctl.conf
 </code></pre>
-<p>修改文件</p>
-<pre class="notranslate"><code class="notranslate">cat &lt;&lt; EOF &gt; /etc/netplan/00-installer-config.yaml
-# This is the network config written by 'subiquity'
-network:
-  version: 2
-  ethernets:
-    ens29f0:
-      dhcp4: false
-      optional: true
-    ens29f1:
-      dhcp4: false
-      optional: true
-  bonds:
-    bond0:
-      dhcp4: false
-      addresses: [192.168.1.11/24]
-      optional: true
-      routes:
-        - to: default
-          via: 192.168.1.254
-      nameservers:
-        addresses: [8.8.8.8,114.114.114.114]
-      interfaces:
-        - ens29f0
-        - ens29f1
-      parameters:
-        mode: balance-alb #绑定模式
-        mii-monitor-interval: 100 #心跳时间
-        lacp-rate: fast #
-        transmit-hash-policy: layer2
-EOF
+<p>在文件中，我们需要添加或修改以下行来禁用IPv6：</p>
+<pre class="notranslate"><code class="notranslate">net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1
 </code></pre>
-<p><strong>2.验证网络</strong><br>
-重启netplan服务,或者重启服务器</p>
-<pre class="notranslate"><code class="notranslate">netplan apply
-ifconfig
-</code></pre></div>
+<p>这些设置的具体含义如下：</p>
+<ul>
+<li>
+<p><code class="notranslate">net.ipv6.conf.all.disable_ipv6 = 1</code>：这条设置将禁用系统上所有网络接口的IPv6功能。这包括物理网络接口、虚拟网络接口以及任何将来可能添加的网络接口。</p>
+</li>
+<li>
+<p><code class="notranslate">net.ipv6.conf.default.disable_ipv6 = 1</code>：这条设置将确保新创建的网络接口默认禁用IPv6功能。当系统添加新的网络接口时（例如，通过热插拔或虚拟机添加），这些接口将不会启用IPv6，除非明确配置为启用。</p>
+</li>
+<li>
+<p><code class="notranslate">net.ipv6.conf.lo.disable_ipv6 = 1</code>：这条设置将禁用回环接口的IPv6功能。回环接口（通常称为lo或localhost）是一个虚拟网络接口，用于本地通信测试。禁用其IPv6功能可以防止通过回环接口进行的IPv6通信。</p>
+</li>
+</ul>
+<p>保存文件并关闭编辑器后，运行以下命令,这将重新加载/etc/sysctl.conf文件中的配置，并应用上述更改：</p>
+<pre class="notranslate"><code class="notranslate">sudo sysctl -p
+</code></pre>
+<p><strong>3.更新GRUB配置以禁用IPv6</strong><br>
+GRUB是Ubuntu的启动加载器，它负责加载和启动Linux内核。通过向GRUB传递特定的启动参数，我们可以影响内核的行为。为了禁用IPv6，我们需要在GRUB配置中添加ipv6.disable=1参数。使用文本编辑器打开/etc/default/grub文件：</p>
+<pre class="notranslate"><code class="notranslate">sudo nano /etc/default/grub
+</code></pre>
+<p>找到GRUB_CMDLINE_LINUX这一行，并在其值中添加ipv6.disable=1参数。</p>
+<pre class="notranslate"><code class="notranslate">GRUB_CMDLINE_LINUX="ipv6.disable=1"
+</code></pre>
+<p>如果GRUB_CMDLINE_LINUX已经包含其他参数，请确保在现有参数之后添加ipv6.disable=1，并使用空格分隔。保存文件并关闭编辑器后，运行以下命令更新GRUB配置：</p>
+<pre class="notranslate"><code class="notranslate">sudo update-grub
+</code></pre>
+<p><strong>4.重启系统以应用更改</strong><br>
+完成上述步骤后，您需要重启Ubuntu 22.04系统以使所有更改生效。重启过程中，GRUB将加载新的配置，并将ipv6.disable=1参数传递给Linux内核。内核在启动时将禁用IPv6功能。</p>
+<p><strong>5.功能说明与注意事项</strong></p>
+<ul>
+<li><strong>sysctl配置的功能</strong><br>
+通过修改/etc/sysctl.conf文件，我们可以直接控制系统内核对IPv6的处理方式。禁用IPv6功能可以确保系统不会尝试使用IPv6地址进行网络通信，从而提高网络安全性并减少不必要的网络流量。这对于某些特定的网络环境或安全策略来说是非常有用的</li>
+</ul></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
