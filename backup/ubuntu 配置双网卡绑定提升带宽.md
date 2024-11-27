@@ -9,10 +9,10 @@ modinfo bonding |more
 ![338db61f8dfd4cd3d3d7d5b02864a4f6](https://github.com/user-attachments/assets/4e67e93d-be25-415a-9767-086ddd4442dc)
 
 
-Ubuntu从17.04开始，已经放弃在/etc/network/interfaces 里固定IP的配置，而是改成netplan方式，配置文件是：/etc/netplan/00-installer-config.yaml
+Ubuntu从17.04开始，已经放弃在/etc/network/interfaces 里固定IP的配置，而是改成netplan方式，配置文件：/etc/netplan/00-installer-config.yaml
 
 
-**修改配置文件**
+**1.修改配置文件**
 ```
 cat << EOF > /etc/netplan/00-installer-config.yaml
 # This is the network config written by 'subiquity'
@@ -46,7 +46,7 @@ network:
 EOF
 ```
 
-**验证网络**
+**2.验证网络**
 重启netplan服务,或者重启服务器
 ```
 netplan apply
