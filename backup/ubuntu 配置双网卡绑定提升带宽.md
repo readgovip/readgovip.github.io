@@ -13,6 +13,11 @@ Ubuntu从17.04开始，已经放弃在/etc/network/interfaces 里固定IP的配�
 
 
 **1.修改配置文件**
+备份文件
+```
+cp etc/netplan/00-installer-config.yaml etc/netplan/00-installer-config.yaml.old
+```
+修改文件
 ```
 cat << EOF > /etc/netplan/00-installer-config.yaml
 # This is the network config written by 'subiquity'

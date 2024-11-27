@@ -92,7 +92,11 @@ bonding(绑定)是一种linux系统下的网卡绑定技术，可以把服务器
 </code></pre>
 <p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/4e67e93d-be25-415a-9767-086ddd4442dc"><img src="https://github.com/user-attachments/assets/4e67e93d-be25-415a-9767-086ddd4442dc" alt="338db61f8dfd4cd3d3d7d5b02864a4f6" style="max-width: 100%;"></a></p>
 <p>Ubuntu从17.04开始，已经放弃在/etc/network/interfaces 里固定IP的配置，而是改成netplan方式，配置文件：/etc/netplan/00-installer-config.yaml</p>
-<p><strong>1.修改配置文件</strong></p>
+<p><strong>1.修改配置文件</strong><br>
+备份文件</p>
+<pre class="notranslate"><code class="notranslate">cp etc/netplan/00-installer-config.yaml etc/netplan/00-installer-config.yaml.old
+</code></pre>
+<p>修改文件</p>
 <pre class="notranslate"><code class="notranslate">cat &lt;&lt; EOF &gt; /etc/netplan/00-installer-config.yaml
 # This is the network config written by 'subiquity'
 network:
