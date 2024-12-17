@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>覆水难收博客</title><link>http://blog.ivps.top</link><description>网络爱好者</description><copyright>覆水难收博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>http://blog.ivps.top</link></image><lastBuildDate>Tue, 17 Dec 2024 04:48:34 +0000</lastBuildDate><managingEditor>覆水难收博客</managingEditor><ttl>60</ttl><webMaster>覆水难收博客</webMaster><item><title>面板安装脚本</title><link>http://blog.ivps.top/post/mian-ban-an-zhuang-jiao-ben.html</link><description>**S-ui面板**&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>覆水难收博客</title><link>http://blog.ivps.top</link><description>网络爱好者</description><copyright>覆水难收博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>http://blog.ivps.top</link></image><lastBuildDate>Tue, 17 Dec 2024 04:49:02 +0000</lastBuildDate><managingEditor>覆水难收博客</managingEditor><ttl>60</ttl><webMaster>覆水难收博客</webMaster><item><title>面板安装脚本</title><link>http://blog.ivps.top/post/mian-ban-an-zhuang-jiao-ben.html</link><description>**S-ui面板**&#13;
 1.安装&#13;
 ```&#13;
 bash &lt;(curl -Ls https://raw.githubusercontent.com/alireza0/s-ui/master/install.sh)&#13;
@@ -566,7 +566,7 @@ tar -xzvf sing-box-1.10.3-linux-amd64.tar.gz  &amp;&amp; cd sing-box-1.10.3-linu
 &#13;
 。</description><guid isPermaLink="true">http://blog.ivps.top/post/shou-cuo-Sing-Box-pei-zhi-biao-%2C-shi-yong-Tun-ke-xue-shang-wang.html</guid><pubDate>Wed, 27 Nov 2024 18:11:37 +0000</pubDate></item><item><title>Ubuntu 禁用IPv6的详细步骤与功能说明</title><link>http://blog.ivps.top/post/Ubuntu%20-jin-yong-IPv6-de-xiang-xi-bu-zou-yu-gong-neng-shuo-ming.html</link><description>**1.备份相关配置文件**&#13;
 在进行系统配置更改之前，进行备份是一个非常重要的步骤。</description><guid isPermaLink="true">http://blog.ivps.top/post/Ubuntu%20-jin-yong-IPv6-de-xiang-xi-bu-zou-yu-gong-neng-shuo-ming.html</guid><pubDate>Wed, 27 Nov 2024 12:33:21 +0000</pubDate></item><item><title>Ubuntu 配置双网卡绑定提升带宽</title><link>http://blog.ivps.top/post/Ubuntu%20-pei-zhi-shuang-wang-qia-bang-ding-ti-sheng-dai-kuan.html</link><description>**Bonding简介**&#13;
-bonding(绑定)是一种linux系统下的网卡绑定技术，可以把服务器上n个物理网卡在系统内部抽象(绑定)成一个逻辑上的网卡，能够提升网络吞吐量、实现网络冗余、负载均衡等功能，有很多优势。</description><guid isPermaLink="true">http://blog.ivps.top/post/Ubuntu%20-pei-zhi-shuang-wang-qia-bang-ding-ti-sheng-dai-kuan.html</guid><pubDate>Wed, 27 Nov 2024 11:51:25 +0000</pubDate></item><item><title>Ubuntu 使用Root用户登录SSH</title><link>http://blog.ivps.top/post/Ubuntu%20-shi-yong-Root-yong-hu-deng-lu-SSH.html</link><description>**1、安装openssh**&#13;
+bonding(绑定)是一种linux系统下的网卡绑定技术，可以把服务器上n个物理网卡在系统内部抽象(绑定)成一个逻辑上的网卡，能够提升网络吞吐量、实现网络冗余、负载均衡等功能，有很多优势。</description><guid isPermaLink="true">http://blog.ivps.top/post/Ubuntu%20-pei-zhi-shuang-wang-qia-bang-ding-ti-sheng-dai-kuan.html</guid><pubDate>Wed, 27 Nov 2024 11:51:25 +0000</pubDate></item><item><title>使用Root用户登录SSH</title><link>http://blog.ivps.top/post/shi-yong-Root-yong-hu-deng-lu-SSH.html</link><description>**1、安装openssh**&#13;
 使用如下命令安装openssh&#13;
 ```&#13;
 sudo apt install openssh-server&#13;
@@ -583,4 +583,4 @@ sudo nano /etc/ssh/sshd_config&#13;
 使用如下命令程序ssh服务&#13;
 ```&#13;
 sudo systemctl restart ssh&#13;
-```。</description><guid isPermaLink="true">http://blog.ivps.top/post/Ubuntu%20-shi-yong-Root-yong-hu-deng-lu-SSH.html</guid><pubDate>Tue, 26 Nov 2024 10:26:51 +0000</pubDate></item></channel></rss>
+```。</description><guid isPermaLink="true">http://blog.ivps.top/post/shi-yong-Root-yong-hu-deng-lu-SSH.html</guid><pubDate>Tue, 26 Nov 2024 10:26:51 +0000</pubDate></item></channel></rss>
