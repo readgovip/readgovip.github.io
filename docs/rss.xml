@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>覆水难收博客</title><link>http://blog.ivps.top</link><description>网络爱好者</description><copyright>覆水难收博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>http://blog.ivps.top</link></image><lastBuildDate>Wed, 18 Dec 2024 09:28:37 +0000</lastBuildDate><managingEditor>覆水难收博客</managingEditor><ttl>60</ttl><webMaster>覆水难收博客</webMaster><item><title>网络线路</title><link>http://blog.ivps.top/post/wang-luo-xian-lu.html</link><description>很多人都只是听过有BGP线路，但不知道BGP线路是什么系路，有什么用，他们的定义是什么，也不太清楚，简单点：BGP线路就是多线线路，但正规的BGP的线路聚合了CT、CN2 CU、WTT、HGC、PCCW、HKBN、NTT、TATA、CMI等线路，保障了海外，香港，大陆都能快速访问网站的多线线路，就叫BGP线路。</description><guid isPermaLink="true">http://blog.ivps.top/post/wang-luo-xian-lu.html</guid><pubDate>Wed, 18 Dec 2024 09:28:03 +0000</pubDate></item><item><title>面板安装脚本</title><link>http://blog.ivps.top/post/mian-ban-an-zhuang-jiao-ben.html</link><description>**S-ui面板**&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>覆水难收博客</title><link>http://blog.ivps.top</link><description>网络爱好者</description><copyright>覆水难收博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>http://blog.ivps.top</link></image><lastBuildDate>Thu, 19 Dec 2024 17:03:56 +0000</lastBuildDate><managingEditor>覆水难收博客</managingEditor><ttl>60</ttl><webMaster>覆水难收博客</webMaster><item><title>网络线路</title><link>http://blog.ivps.top/post/wang-luo-xian-lu.html</link><description>很多人都只是听过有BGP线路，但不知道BGP线路是什么系路，有什么用，他们的定义是什么，也不太清楚，简单点：BGP线路就是多线线路，但正规的BGP的线路聚合了CT、CN2 CU、WTT、HGC、PCCW、HKBN、NTT、TATA、CMI等线路，保障了海外，香港，大陆都能快速访问网站的多线线路，就叫BGP线路。</description><guid isPermaLink="true">http://blog.ivps.top/post/wang-luo-xian-lu.html</guid><pubDate>Wed, 18 Dec 2024 09:28:03 +0000</pubDate></item><item><title>面板安装脚本</title><link>http://blog.ivps.top/post/mian-ban-an-zhuang-jiao-ben.html</link><description>**S-ui面板**&#13;
 1.安装&#13;
 ```&#13;
 bash &lt;(curl -Ls https://raw.githubusercontent.com/alireza0/s-ui/master/install.sh)&#13;
@@ -16,6 +16,14 @@ rm -f /etc/systemd/system/sing-box.service&#13;
 systemctl daemon-reload&#13;
 rm -fr /usr/local/s-ui&#13;
 rm /usr/bin/s-ui&#13;
+&#13;
+```&#13;
+&#13;
+**极光面板**&#13;
+[项目地址](https://github.com/Aurora-Admin-Panel/deploy)&#13;
+1.安装&#13;
+```&#13;
+bash &lt;(curl -fsSL https://raw.githubusercontent.com/Aurora-Admin-Panel/deploy/main/install.sh)&#13;
 &#13;
 ```&#13;
 。</description><guid isPermaLink="true">http://blog.ivps.top/post/mian-ban-an-zhuang-jiao-ben.html</guid><pubDate>Tue, 17 Dec 2024 04:37:34 +0000</pubDate></item><item><title>手搓Sing-Box配置表,使用Tun科学上网</title><link>http://blog.ivps.top/post/shou-cuo-Sing-Box-pei-zhi-biao-%2C-shi-yong-Tun-ke-xue-shang-wang.html</link><description>**1.下载Sing-box**&#13;
